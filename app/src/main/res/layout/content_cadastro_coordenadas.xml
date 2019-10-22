@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    >
+
+   <EditText
+       android:id="@+id/coordenadas"
+       android:layout_width="350dp"
+       android:layout_height="wrap_content"
+       android:singleLine="true"
+       android:inputType="text|textLongMessage"
+       android:hint="Coordenadas"
+       android:layout_marginTop="75dp">
+
+   </EditText>
+
+
+    <EditText
+        android:id="@+id/horario"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:inputType="text|textLongMessage"
+        android:hint="Horario"
+        android:layout_marginTop="5dp">
+
+    </EditText>
+
+
+    <Spinner
+        android:id="@+id/tipoDenuncia"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/Str_Tipos_Ocorrencias"
+        android:layout_marginTop="5dp">
+
+        >
+
+    </Spinner>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="35dp"
+    >
+        <Button
+            android:id="@+id/btnCancelar"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Cancelar"
+            android:onClick="ClickCancelar">
+
+        </Button>
+
+
+
+        <Button
+            android:id="@+id/btnConfirmar"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Confirmar"
+            android:onClick="ClickConfirmar">
+
+        </Button>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
+
+

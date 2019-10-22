@@ -16,6 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".CadastroCoordenadas"
+            android:label="@string/title_activity_cadastro_coordenadas"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".Assalto"
             android:label="@string/title_activity_assalto"
             android:theme="@style/AppTheme.NoActionBar">

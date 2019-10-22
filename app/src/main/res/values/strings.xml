@@ -19,4 +19,21 @@
     <string name="lbl_descricao">Descricao</string>
     <string name="lbl_lblr">blblbl</string>
     <string name="lbl_latlng">latLng</string>
+    <string name="title_activity_cadastro_coordenadas">CadastroCoordenadas</string>
+
+
+
+    <string-array name="Str_Tipos_Ocorrencias">
+        <item>Furto</item>
+        <item>Roubo</item>
+        <item>Desaparecimento de Pessoal</item>
+        <item>Homicidio</item>
+        <item>Estupro</item>
+        <item>Briga</item>
+        <item>Latrocinio</item>
+        <item>arrastao</item>
+    </string-array>
+
+
+
 </resources>
