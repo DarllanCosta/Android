@@ -73,8 +73,15 @@ public class CadastroCoordenadas extends AppCompatActivity {
         final String tipo = editTipo.getSelectedItem().toString();
         Denuncia denuncia = new Denuncia(latitude, longitude, descricao, tipo);
         bdDenuncia.push().setValue(denuncia);
+        final Intent intent = new Intent(this, MapsActivity.class);
+        startActivity(intent);
     }
 
+
+    public void clickCancela(View view){
+        final Intent intent = new Intent(this, MapsActivity.class);
+        startActivity(intent);
+    }
 
 
 
