@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.hellcife_.ui.Denuncia;
 import com.google.android.gms.common.wrappers.Wrappers;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -19,12 +20,20 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener  {
     private static final int FINE_LOCATION_REQUEST = 986;
     private GoogleMap mMap;
     private Boolean fine_location;
     public final static String EXTRA_MESSAGE = "coordenadas";
+    FirebaseDatabase fbDB;
+    DatabaseReference bdDenuncia;
 
 
     @Override
@@ -52,6 +61,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
+        fbDB = FirebaseDatabase.getInstance();
+        bdDenuncia = fbDB.getReference("Denuncia");
+
+
+
+
         mMap = googleMap;
 
         LatLng recife = new LatLng(-8.05, -34.9);
@@ -71,7 +86,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
+
+        bdDenuncia.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Denuncia denuncia = dataSnapshot.getValue(Denuncia.class);
+                if(denuncia != null) {
+                    LatLng latLng = new LatLng(Double.parseDouble(denuncia.getLatitude()),Double.parseDouble(denuncia.getLongitude()));
+                    System.out.println(latLng.toString());
+                    mMap.addMarker(new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.defaultMarker(35)));
+                }
+            }
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) { }
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) { }
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) { }
+            @Override
+            public void onCancelled(DatabaseError databaseError) { }
+        });
     }
+
+
+
 
     private void requestPermission(){
         int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);

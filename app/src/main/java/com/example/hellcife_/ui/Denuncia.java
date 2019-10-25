@@ -8,9 +8,10 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class Denuncia {
     String descricao;
-    String tipo;
     String latitude;
     String longitude;
+    String tipo;
+
 
     public Denuncia(){
 
