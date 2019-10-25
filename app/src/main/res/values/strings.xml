@@ -24,7 +24,7 @@
     <string-array name="Str_Tipos_Ocorrencias">
         <item>Furto</item>
         <item>Roubo</item>
-        <item>Desaparecimento de Pessoal</item>
+        <item>Desaparecimento de Pessoa</item>
         <item>Homicidio</item>
         <item>Estupro</item>
         <item>Briga</item>

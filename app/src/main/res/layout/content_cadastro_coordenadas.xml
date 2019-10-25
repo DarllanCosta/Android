@@ -8,24 +8,36 @@
     >
 
    <EditText
-       android:id="@+id/coordenadas"
+       android:id="@+id/latitude"
        android:layout_width="350dp"
        android:layout_height="wrap_content"
        android:singleLine="true"
        android:inputType="text|textLongMessage"
-       android:hint="Coordenadas"
+       android:hint="Latitude"
        android:layout_marginTop="75dp">
 
    </EditText>
 
 
     <EditText
-        android:id="@+id/horario"
+        android:id="@+id/longitude"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:inputType="text|textLongMessage"
-        android:hint="Horario"
+        android:hint="Longitude"
+        android:layout_marginTop="5dp">
+
+    </EditText>
+
+
+    <EditText
+        android:id="@+id/descricao"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:inputType="text|textLongMessage"
+        android:hint="Descricao"
         android:layout_marginTop="5dp">
 
     </EditText>
@@ -67,7 +79,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Confirmar"
-            android:onClick="ClickConfirmar">
+            android:onClick="clickDenuncia">
 
         </Button>
 
