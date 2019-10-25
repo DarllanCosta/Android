@@ -1,5 +1,6 @@
 package com.example.hellcife_;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -9,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+import android.widget.EditText;
+
 
 public class CadastroCoordenadas extends AppCompatActivity {
 
@@ -27,6 +30,18 @@ public class CadastroCoordenadas extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(MapsActivity.EXTRA_MESSAGE);
+        EditText editText = (EditText) findViewById(R.id.coordenadas);
+        editText.setText(message);
+
+
     }
+
+
+
+
 
 }

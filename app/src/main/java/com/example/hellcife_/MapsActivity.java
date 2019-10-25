@@ -5,6 +5,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -23,6 +24,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private static final int FINE_LOCATION_REQUEST = 986;
     private GoogleMap mMap;
     private Boolean fine_location;
+    public final static String EXTRA_MESSAGE = "coordenadas";
 
 
     @Override
@@ -49,6 +51,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
         mMap = googleMap;
 
         LatLng recife = new LatLng(-8.05, -34.9);
@@ -92,5 +95,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapClick(LatLng latLng) {
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.addMarker(new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.defaultMarker(35)));
+        Intent intent = new Intent(this, CadastroCoordenadas.class);
+
+
+        intent.putExtra(EXTRA_MESSAGE, latLng.toString());
+        startActivity(intent);
     }
 }
