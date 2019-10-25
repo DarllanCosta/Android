@@ -96,9 +96,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.addMarker(new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.defaultMarker(35)));
         Intent intent = new Intent(this, CadastroCoordenadas.class);
+        Bundle args = new Bundle();
+        args.putParcelable("coordenadas", latLng);
+        intent.putExtra("cd" , args);
 
 
-        intent.putExtra(EXTRA_MESSAGE, latLng.toString());
         startActivity(intent);
     }
 }

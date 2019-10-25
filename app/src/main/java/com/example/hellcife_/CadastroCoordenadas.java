@@ -3,6 +3,7 @@ package com.example.hellcife_;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -33,7 +34,9 @@ public class CadastroCoordenadas extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        String message = intent.getStringExtra(MapsActivity.EXTRA_MESSAGE);
+        Bundle bundle = intent.getParcelableExtra("cd");
+        LatLng coordenadas = bundle.getParcelable("coordenadas");
+        String message = coordenadas.toString();
         EditText editText = (EditText) findViewById(R.id.coordenadas);
         editText.setText(message);
 
