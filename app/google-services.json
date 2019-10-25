@@ -1,42 +1,42 @@
 {
   "project_info": {
-    "project_number": "327461619393",
-    "firebase_url": "https://hellcife-2d66c.firebaseio.com",
-    "project_id": "hellcife-2d66c",
-    "storage_bucket": "hellcife-2d66c.appspot.com"
+    "project_number": "372901729478",
+    "firebase_url": "https://hellcife-cee59.firebaseio.com",
+    "project_id": "hellcife-cee59",
+    "storage_bucket": "hellcife-cee59.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:327461619393:android:1e45679f1518f66bf53640",
+        "mobilesdk_app_id": "1:372901729478:android:911de59bd1def8e552f3c7",
         "android_client_info": {
           "package_name": "com.example.hellcife_"
         }
       },
       "oauth_client": [
         {
-          "client_id": "327461619393-1jnnq2u7ju7umk62vdt495i3pu27u3je.apps.googleusercontent.com",
+          "client_id": "372901729478-rttco3ckpap15ofsaesnb88fl6kkigrn.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.hellcife_",
-            "certificate_hash": "da415774c1a9e9a780740f88aeec3d345b148cf9"
+            "certificate_hash": "f3949f5460ff7b9ad9db075283579523bf6a6ccf"
           }
         },
         {
-          "client_id": "327461619393-vphqg66pea048304dlv3e06jht03c4fd.apps.googleusercontent.com",
+          "client_id": "372901729478-4jsig6ond5ggj70ijmop1ta94474pbfl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC-vz4tO9W6xUB-Gp2D6VAK4BG_H2O1q1g"
+          "current_key": "AIzaSyBTOmekixqsa3pXCcq_BD06G1jzprLScrY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "327461619393-vphqg66pea048304dlv3e06jht03c4fd.apps.googleusercontent.com",
+              "client_id": "372901729478-4jsig6ond5ggj70ijmop1ta94474pbfl.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
