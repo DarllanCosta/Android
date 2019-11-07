@@ -92,9 +92,36 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Denuncia denuncia = dataSnapshot.getValue(Denuncia.class);
                 if(denuncia != null) {
+                    float tipoMarcador = 0;
+                    String tipo = denuncia.getTipo();
+
+
+                    if(tipo.equals("Furto")){
+                        tipoMarcador =  BitmapDescriptorFactory.HUE_VIOLET;
+                    }else if(tipo.equalsIgnoreCase("Roubo")){
+                        tipoMarcador =  BitmapDescriptorFactory.HUE_BLUE;
+                    }else if(tipo.equalsIgnoreCase("Desaparecimento de Pessoa")){
+                        tipoMarcador =  BitmapDescriptorFactory.HUE_GREEN;
+                    }else if(tipo.equalsIgnoreCase("Estupro")){
+                        tipoMarcador =  BitmapDescriptorFactory.HUE_RED;
+                    }else if(tipo.equalsIgnoreCase("Briga")){
+                        tipoMarcador =  BitmapDescriptorFactory.HUE_YELLOW;
+                    }else if(tipo.equalsIgnoreCase("Latrocinio")){
+                        tipoMarcador =  BitmapDescriptorFactory.HUE_ORANGE;
+                    }else if(tipo.equalsIgnoreCase("Arrastao")){
+                        tipoMarcador =  BitmapDescriptorFactory.HUE_MAGENTA;
+                    }
+
+
+
                     LatLng latLng = new LatLng(Double.parseDouble(denuncia.getLatitude()),Double.parseDouble(denuncia.getLongitude()));
-                    System.out.println(latLng.toString());
-                    mMap.addMarker(new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.defaultMarker(35)));
+                    mMap.addMarker(new MarkerOptions()
+                            .position(latLng)
+                            .icon(BitmapDescriptorFactory
+                                    .defaultMarker(tipoMarcador))
+
+
+                    );
                 }
             }
             @Override
