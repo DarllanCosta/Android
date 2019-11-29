@@ -29,8 +29,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMyLocationButtonClickListener,
-        GoogleMap.OnMyLocationClickListener  {
+        GoogleMap.OnMyLocationClickListener{
 
     private static final int FINE_LOCATION_REQUEST = 986;
     private GoogleMap mMap;
@@ -38,10 +41,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public final static String EXTRA_MESSAGE = "coordenadas";
     FirebaseDatabase fbDB;
     DatabaseReference bdDenuncia;
-
+    List<Denuncia> denuncias = new ArrayList<>()
+;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -78,12 +83,33 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.setOnMapClickListener(this);
         mMap.setMyLocationEnabled(true);
+        final Intent intent = new Intent(this, ViewCoodenadas.class);
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                marker.remove();
+                Denuncia abrir = null ;
+                for(Denuncia denuncia: denuncias){
 
-                return false;
+                   Double latitude = Double.parseDouble(denuncia.getLatitude());
+                   Double longitude = Double.parseDouble(denuncia.getLongitude());
+
+                    if((latitude  == marker.getPosition().latitude)&&(longitude  == marker.getPosition().longitude)){
+                        abrir  = denuncia;
+                    }
+                }
+
+                Bundle args = new Bundle();
+                args.putString("latitude", abrir.getLatitude());
+                args.putString("longitude", abrir.getLongitude());
+                args.putString("tipo", abrir.getTipo());
+                args.putString("descricao", abrir.getDescricao());
+
+                intent.putExtra("den" , args);
+
+
+                startActivity(intent);
+
+                return true;
             }
 
         });
@@ -96,6 +122,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Denuncia denuncia = dataSnapshot.getValue(Denuncia.class);
                 if(denuncia != null) {
+                    denuncias.add(denuncia);
                     float tipoMarcador = 0;
                     String tipo = denuncia.getTipo();
 
@@ -177,6 +204,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         startActivity(intent);
     }
 
+
+
+
+
+
+
     public void onMyLocationClick(@NonNull Location location) {
         Toast.makeText(this, "Você está aqui!", Toast.LENGTH_SHORT).show();
     }
@@ -185,5 +218,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Toast.makeText(this, "Indo para a sua localização.", Toast.LENGTH_SHORT).show();
         return false;
     }
+
+
+
 
 }
