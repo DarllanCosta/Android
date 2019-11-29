@@ -1,5 +1,6 @@
 package com.example.hellcife_;
 
+import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
@@ -7,6 +8,7 @@ import androidx.fragment.app.FragmentActivity;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -27,7 +29,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener  {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMyLocationButtonClickListener,
+        GoogleMap.OnMyLocationClickListener  {
+
     private static final int FINE_LOCATION_REQUEST = 986;
     private GoogleMap mMap;
     private Boolean fine_location;
@@ -73,7 +77,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLng(recife));
 
         mMap.setOnMapClickListener(this);
-
+        mMap.setMyLocationEnabled(true);
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
@@ -133,6 +137,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onCancelled(DatabaseError databaseError) { }
         });
+
+        mMap.setOnMyLocationButtonClickListener(this);
+        mMap.setOnMyLocationClickListener(this);
     }
 
 
@@ -149,11 +156,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 FINE_LOCATION_REQUEST);
     }
 
-    private void onRequestPermissionResult(int requestCode, String permission[], int[] grantResult){
-        boolean granted = (grantResult.length > 0) && (grantResult[0] == PackageManager.PERMISSION_GRANTED);
-
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        boolean granted = (grantResults.length > 0) &&
+                (grantResults[0] == PackageManager.PERMISSION_GRANTED);
         fine_location = (requestCode == FINE_LOCATION_REQUEST) && granted;
-
+        mMap.setMyLocationEnabled(fine_location);
     }
 
     @Override
@@ -168,4 +176,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         startActivity(intent);
     }
+
+    public void onMyLocationClick(@NonNull Location location) {
+        Toast.makeText(this, "Você está aqui!", Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    public boolean onMyLocationButtonClick() {
+        Toast.makeText(this, "Indo para a sua localização.", Toast.LENGTH_SHORT).show();
+        return false;
+    }
+
 }
