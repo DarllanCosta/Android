@@ -51,7 +51,8 @@
         android:id="@+id/btnRegistrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Filtrar">
+        android:text="Filtrar"
+        android:onClick="abrirFiltro">
 
     </Button>
 

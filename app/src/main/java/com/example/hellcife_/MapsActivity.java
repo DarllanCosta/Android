@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.hellcife_.ui.Denuncia;
@@ -190,6 +191,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         fine_location = (requestCode == FINE_LOCATION_REQUEST) && granted;
         mMap.setMyLocationEnabled(fine_location);
     }
+
+    public void abrirFiltro(View view){
+        Intent intent = new Intent(this, Filtro.class);
+        startActivity(intent);
+    }
+
+
 
     @Override
     public void onMapClick(LatLng latLng) {
