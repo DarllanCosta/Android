@@ -42,18 +42,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public final static String EXTRA_MESSAGE = "coordenadas";
     FirebaseDatabase fbDB;
     DatabaseReference bdDenuncia;
-    List<Denuncia> denuncias = new ArrayList<>()
+    List<Denuncia> denuncias = new ArrayList<>();
+    private int filtro = 0;
 ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        Intent abrirMapa = getIntent();
+         filtro = abrirMapa.getIntExtra("filtro", 0 );
 
         requestPermission();
     }
@@ -126,34 +130,39 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     denuncias.add(denuncia);
                     float tipoMarcador = 0;
                     String tipo = denuncia.getTipo();
+                    boolean mostrar = true;
 
-
-                    if(tipo.equals("Furto")){
-                        tipoMarcador =  BitmapDescriptorFactory.HUE_VIOLET;
-                    }else if(tipo.equalsIgnoreCase("Roubo")){
-                        tipoMarcador =  BitmapDescriptorFactory.HUE_BLUE;
-                    }else if(tipo.equalsIgnoreCase("Desaparecimento de Pessoa")){
-                        tipoMarcador =  BitmapDescriptorFactory.HUE_GREEN;
-                    }else if(tipo.equalsIgnoreCase("Estupro")){
-                        tipoMarcador =  BitmapDescriptorFactory.HUE_RED;
-                    }else if(tipo.equalsIgnoreCase("Briga")){
-                        tipoMarcador =  BitmapDescriptorFactory.HUE_YELLOW;
-                    }else if(tipo.equalsIgnoreCase("Latrocinio")){
-                        tipoMarcador =  BitmapDescriptorFactory.HUE_ORANGE;
-                    }else if(tipo.equalsIgnoreCase("Arrastao")){
-                        tipoMarcador =  BitmapDescriptorFactory.HUE_MAGENTA;
+                    if (tipo.equals("Furto") && ((filtro == 0) || (filtro == 1))) {
+                        tipoMarcador = BitmapDescriptorFactory.HUE_VIOLET;
+                    } else if (tipo.equalsIgnoreCase("Roubo") && ((filtro == 0) || (filtro == 2))) {
+                        tipoMarcador = BitmapDescriptorFactory.HUE_BLUE;
+                    } else if (tipo.equalsIgnoreCase("Desaparecimento de Pessoa") && ((filtro == 0) || (filtro == 3))) {
+                        tipoMarcador = BitmapDescriptorFactory.HUE_GREEN;
+                    } else if (tipo.equalsIgnoreCase("Estupro") && ((filtro == 0) || (filtro == 4))) {
+                        tipoMarcador = BitmapDescriptorFactory.HUE_RED;
+                    } else if (tipo.equalsIgnoreCase("Briga") && ((filtro == 0) || (filtro == 5))) {
+                        tipoMarcador = BitmapDescriptorFactory.HUE_YELLOW;
+                    } else if (tipo.equalsIgnoreCase("Homicidio") && ((filtro == 0) || (filtro == 6))) {
+                        tipoMarcador = BitmapDescriptorFactory.HUE_ORANGE;
+                    } else if (tipo.equalsIgnoreCase("Arrastao") && ((filtro == 0) || (filtro == 7))) {
+                        tipoMarcador = BitmapDescriptorFactory.HUE_MAGENTA;
+                    } else if (tipo.equalsIgnoreCase("Latrocinio") && ((filtro == 0) || (filtro == 8))) {
+                        tipoMarcador = BitmapDescriptorFactory.HUE_CYAN;
+                    } else {
+                        mostrar = false;
                     }
 
 
+                    if (mostrar == true) {
+                        LatLng latLng = new LatLng(Double.parseDouble(denuncia.getLatitude()), Double.parseDouble(denuncia.getLongitude()));
+                        mMap.addMarker(new MarkerOptions()
+                                .position(latLng)
+                                .icon(BitmapDescriptorFactory
+                                        .defaultMarker(tipoMarcador))
 
-                    LatLng latLng = new LatLng(Double.parseDouble(denuncia.getLatitude()),Double.parseDouble(denuncia.getLongitude()));
-                    mMap.addMarker(new MarkerOptions()
-                            .position(latLng)
-                            .icon(BitmapDescriptorFactory
-                                    .defaultMarker(tipoMarcador))
 
-
-                    );
+                        );
+                    }
                 }
             }
             @Override
@@ -202,7 +211,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapClick(LatLng latLng) {
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.addMarker(new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.defaultMarker(35)));
+       // mMap.addMarker(new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.defaultMarker(35)));
         Intent intent = new Intent(this, CadastroCoordenadas.class);
         Bundle args = new Bundle();
         args.putParcelable("coordenadas", latLng);
