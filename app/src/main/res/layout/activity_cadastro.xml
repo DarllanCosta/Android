@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/back"
+
     tools:context=".Cadastro">
 
 
@@ -23,7 +25,8 @@
         android:inputType="textPersonName"
         android:text="@string/lbl_tipo"
         tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="78dp" />
+        tools:layout_editor_absoluteY="78dp"         android:textColor="@color/Vermelho"
+    />
 
     <TextView
         android:id="@+id/textView6"
@@ -31,6 +34,7 @@
         android:layout_height="wrap_content"
         android:text="Descrição"
         tools:layout_editor_absoluteX="27dp"
+        android:textColor="@color/Vermelho"
         tools:layout_editor_absoluteY="137dp" />
 
     <EditText
@@ -40,6 +44,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="424dp"
         android:ems="10"
+        android:textColor="@color/Vermelho"
         android:hint="@string/lbl_descricao"
         android:inputType="textPersonName"
         android:text="@string/lbl_descricao"
@@ -52,6 +57,7 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         tools:layout_editor_absoluteX="31dp"
+        android:textColor="@color/Vermelho"
         tools:layout_editor_absoluteY="322dp" />
 
     <EditText
@@ -60,6 +66,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textColor="@color/Vermelho"
         android:text="@string/lbl_latlng"
         tools:layout_editor_absoluteX="27dp"
         tools:layout_editor_absoluteY="363dp" />
@@ -67,6 +74,7 @@
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
+        android:textColor="@color/Vermelho"
         android:layout_height="wrap_content"
         android:text="Button"
         tools:layout_editor_absoluteX="294dp"

@@ -52,7 +52,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Filtrar"
-        android:onClick="abrirFiltro">
+        android:onClick="abrirFiltro"
+        android:textColor="@color/Vermelho"
+        android:background="@color/colorPrimary">
+
 
     </Button>
 

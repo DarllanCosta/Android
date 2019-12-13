@@ -4,28 +4,36 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:background="@color/back"
+
     >
 
 
     <EditText
+        android:layout_marginLeft="15px"
         android:id="@+id/edit_email"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:inputType="text|textEmailAddress"
         android:hint="Email"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="5dp"
+        android:textColor="@color/Vermelho">
+
 
     </EditText>
 
     <EditText
+        android:layout_marginLeft="15px"
         android:id="@+id/edit_password"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:inputType="text|textPassword"
         android:hint="Password"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="5dp"
+        android:textColor="@color/Vermelho">
+
 
     </EditText>
 
@@ -41,22 +49,29 @@
         >
 
         <Button
-            android:id="@+id/btnLogar"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="Entrar"
-            android:onClick="clickLog">
-
-        </Button>
-
-        <Button
             android:id="@+id/btnRegistrar"
             android:layout_width="150dp"
+            android:textColor="@color/Vermelho"
+            android:background="@color/colorPrimary"
             android:layout_height="wrap_content"
             android:text="Registrar"
             android:onClick="clickRegistrar">
 
         </Button>
+
+        <Button
+            android:id="@+id/btnLogar"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Entrar"
+            android:onClick="clickLog"
+            android:textColor="@color/colorPrimary"
+            android:background="@color/Vermelho"
+            android:layout_marginLeft="30px">
+
+
+        </Button>
+
 
 
 

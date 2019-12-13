@@ -5,51 +5,66 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:background="@color/back"
     >
 
     <TextView
+        android:layout_marginLeft="15px"
         android:id="@+id/latitude"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:inputType="text|textLongMessage"
         android:hint="Latitude"
-        android:layout_marginTop="75dp">
+        android:layout_marginTop="75dp"
+        android:textColor="@color/Vermelho">
+
 
     </TextView>
 
 
     <TextView
+        android:layout_marginLeft="15px"
+
         android:id="@+id/longitude"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:inputType="text|textLongMessage"
         android:hint="Longitude"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="5dp"
+        android:textColor="@color/Vermelho">
+
 
     </TextView>
 
 
     <TextView
+        android:layout_marginLeft="15px"
+
         android:id="@+id/descricao"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:inputType="text|textLongMessage"
         android:hint="Descricao"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="5dp"
+        android:textColor="@color/Vermelho">
 
     </TextView>
 
 
     <TextView
+        android:layout_marginLeft="15px"
+
         android:id="@+id/tipoDenuncia"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:inputType="text|textLongMessage"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="5dp"
+        android:textColor="@color/Vermelho">
+
 
     </TextView>
 
@@ -65,6 +80,8 @@
         <Button
             android:id="@+id/btnCancelar"
             android:layout_width="150dp"
+            android:textColor="@color/colorPrimary"
+            android:background="@color/Vermelho"
             android:layout_height="wrap_content"
             android:text="voltar"
             android:onClick="clickVoltar">
